@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * order;
 @property (nonatomic, retain) NSNumber * done;
+@property (nonatomic, retain) NSNumber * num;
 
 @end

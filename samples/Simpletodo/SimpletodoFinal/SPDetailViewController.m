@@ -9,7 +9,8 @@
 #import "SPDetailViewController.h"
 #import "Todo.h"
 
-@interface SPDetailViewController ()
+@interface SPDetailViewController ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *numberField;
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
@@ -43,6 +44,10 @@
     if (self.detailItem) {
         self.textField.text = [self.detailItem title];
     }
+    
+    if (self.detailItem.num) {
+        self.numberField.text = [self.detailItem.num description];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +63,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    self.numberField.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -83,6 +89,11 @@
 {
 	[super viewWillDisappear:animated];
     self.detailItem.title = self.textField.text;
+    if ([self.numberField.text length] == 0) {
+        self.detailItem.num = nil;
+    }else{
+        self.detailItem.num = @([self.numberField.text doubleValue]);
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated

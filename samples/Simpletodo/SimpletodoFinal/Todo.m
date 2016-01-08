@@ -14,5 +14,6 @@
 @dynamic title;
 @dynamic order;
 @dynamic done;
+@dynamic num;
 
 @end
