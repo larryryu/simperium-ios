@@ -67,10 +67,7 @@ static SPLogLevels logLevel = SPLogLevelsInfo;
         }
         
         // Construct the diff in the expected format
-        return @{
-                 OP_OP : OP_REPLACE,
-                 OP_VALUE : otherValue
-                 };
+        return [NSDictionary dictionaryWithObjectsAndKeys:OP_REPLACE,OP_OP,otherValue,OP_VALUE, nil];
     }
     
     // DiffMatchPatch: find the diff, and let's use some logic from MobWrite to clean stuff up
